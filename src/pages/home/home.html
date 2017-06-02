@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="login">
+  <ion-list>
+    <ion-item>
+          <ion-label floating>Usuario</ion-label>
+          <ion-input type="text" formControlName="usuario"></ion-input>          
+    </ion-item>
+    <ion-item *ngIf="login.get('usuario').errors">
+    <p *ngIf="login.get('usuario').hasError('required')">
+        Campo obligatorio
+    </p>    
+
+    <p *ngIf="login.get('usuario').hasError('minlength')">
+        Minimo 6 Carácteres
+    </p>    
+
+    <p *ngIf="login.get('usuario').hasError('pattern')">
+        Usuario incorrecto
+    </p>    
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+          <ion-input type="text" formControlName="password"></ion-input>          
+    </ion-item>
+
+    <ion-item *ngIf="login.get('password').errors">
+    <p *ngIf="login.get('password').hasError('required')">
+        Campo obligatorio
+    </p>    
+    <p *ngIf="login.get('password').hasError('minlength')">
+        Minimo 8 Carácteres
+    </p>    
+    <p *ngIf="login.get('password').hasError('pattern')">
+        Password incorrecto
+    </p>    
+    </ion-item>
+
+    <ion-item>
+      <button ion-button (click)="submit()">Aceptar</button>
+    </ion-item>
+  </ion-list>
+</form>
+</ion-content>
